@@ -1,0 +1,85 @@
+/* Global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+/* App container */
+.app-container {
+  display: flex;
+  flex-direction: column; /* Stack sidebar and main-content vertically */
+  height: 100vh;
+}
+
+/* Vertical Sidebar (fixed on left) */
+.sidebar {
+  background-color: #060b26; /* Solid dark blue */
+  width: 250px;
+  height: 100vh; /* Full viewport height */
+  position: fixed; /* Fixed so it stays on left */
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: start; /* Align content to the left */
+  align-items: center; /* Center content vertically */
+  padding-left: 20px; /* Optional padding */
+  z-index: 10; /* Above content */
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.2); /* Subtle shadow on right */
+}
+
+/* Main content area */
+.main-content {
+  flex: 1; /* Grow to fill available space */
+  padding: 20px;
+  margin-top: 80px; /* Offset if needed for any top elements; adjust or remove if no horizontal bar */
+  margin-left: 250px; /* Offset to start after the 250px sidebar */
+  overflow-y: auto; /* Scroll if content overflows */
+  display: flex; /* Enable flex for centering */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center children vertically */
+  min-height: calc(100vh - 80px); /* Adjust for top margin if kept */
+  width: calc(100% - 250px); /* Full width minus sidebar */
+  box-sizing: border-box;
+}
+
+/* Calendar wrapper (merged and fixed conflicts) */
+.sx-react-calendar-wrapper {
+  width: 100%; /* Full width of available space in main-content */
+  max-width: 1200px; /* Cap at 1200px for larger screens */
+  height: 800px; /* Default height */
+  max-height: 90vh; /* Cap at 90% of viewport height */
+  margin: 0 auto; /* Center horizontally within main-content */
+  background: #fff; /* White background for visibility */
+  border: 1px solid #e0e0e0; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow */
+  box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px; /* Narrower sidebar on mobile */
+    padding-left: 10px;
+  }
+
+  .main-content {
+    margin-left: 200px; /* Adjust offset for narrower sidebar */
+    padding: 10px;
+    width: calc(100% - 200px);
+  }
+
+  .sx-react-calendar-wrapper {
+    max-width: 100%; /* Full width on mobile */
+    height: 600px; /* Reduced height for mobile */
+    max-height: 80vh;
+  }
+}

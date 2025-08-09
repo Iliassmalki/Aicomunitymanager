@@ -1,0 +1,37 @@
+.sx-react-calendar-wrapper {
+  width: 1200px;
+  max-width: 60vw;
+  height: 500px;
+  max-height: 90vh;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+.Addbutton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #2563eb; /* Blue color */
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.7); /* Glowing effect */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.Addbutton:hover {
+  background-color: #1d4ed8; /* Darker blue on hover */
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.9); /* Stronger glow on hover */
+}
+
+.Addbutton:active {
+  background-color: #1e40af; /* Even darker blue on press */
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.5); /* Reduced glow on press */
+  transform: scale(0.95); /* Slight scale down for press effect */
+}
