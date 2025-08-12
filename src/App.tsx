@@ -6,25 +6,26 @@ import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/sidebar';
-import Dasboard from './pages/dasboard'; // Note: Typo? Should be Dashboard?
+import Dasboard from './pages/dasboard'; 
 import Calendar from './pages/Calendar';
 import CreatePost from './pages/CreatePost'
 import Analytics from './pages/Analytics'
+import Footer from './components/Footer'
 function App() {
   return (
     <Router>
-      <div className="app-container">
+
         <Sidebar />
-        <div className="main-content">
+     
           <Routes>
             <Route path='/' element={<Dasboard />} />
             <Route path='/calendar' element={<Calendar />} />
             <Route path='/CreatePost' element={<CreatePost />} />
             <Route path='/Analytics' element={<Analytics />} />
           </Routes>
-        </div>
-      </div>
+          <Footer />
     </Router>
+    
   );
 }
 
