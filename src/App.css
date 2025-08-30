@@ -1,0 +1,16 @@
+body {
+    padding-top: 80px; /* same as navbar height */
+    height: 100%;
+    margin: 0;
+
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, var(--linkedin-light-blue) 0%, var(--linkedin-white) 100%);
+    background-attachment: fixed;
+    color: var(--linkedin-gray);
+  }
+  :root {
+    --linkedin-blue: #0a66c2;
+    --linkedin-light-blue: #e8f0fe;
+    --linkedin-white: #ffffff;
+    --linkedin-gray: #6b7280;
+  }

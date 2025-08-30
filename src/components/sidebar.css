@@ -1,125 +1,234 @@
 /* General reset for consistency */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Horizontal Navbar (sidebar) */
-  .sidebar {
-    background-color: rgba(6, 11, 38, 0.9); /* Slightly transparent dark color */
-    height: 80px;
-    width: 100%; /* Full width for horizontal navbar */
-    display: flex;
-    align-items: center;
-    padding: 0 2rem;
-    position: fixed;
-    top: 0;
-    z-index: 900; /* Lower z-index to allow menu-bars to appear above */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-  }
-  
-  /* Menu bars (hamburger icon or toggle) */
-  .menu-bars {
-    font-size: 2rem;
-    background: none;
-    color: #f5f5f5; /* White icon for contrast */
-    cursor: pointer;
-    transition: color 0.3s ease;
-    z-index: 1000; /* Higher z-index to ensure it's above .sidebar */
-  }
-  
-  /* Ensure the toggle container doesn't interfere */
-  .sidebare-toggle {
-    background: transparent;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    padding: 0 2rem;
-    z-index: 1000; /* Ensure toggle container is above .sidebar */
-  }
-  
-  /* Vertical Sidebar (Nav Menu) */
-  .nav-menu {
-    background: rgba(6, 11, 38, 0.2); /* Semi-transparent dark background */
-    backdrop-filter: blur(10px); /* Blur effect for glassmorphism */
-    -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
-    width: 250px;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: -100%; /* Hidden by default */
-    transition: left 0.35s ease-in-out; /* Smooth slide-in */
-    z-index: 950; /* Above main content, below .sidebar-toggle */
-    border-right: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
-  }
-  
-  /* Active state for vertical sidebar */
-  .nav-menu.active {
-    left: 0;
-  }
-  
-  /* Menu items container */
-  .nav-menu-items {
-    width: 100%;
-    padding: 1rem 0;
-  }
-  
-  /* Individual menu items */
-  .nav-text {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding: 8px 0;
-    list-style: none;
-    height: 60px;
-  }
-  
-  /* Links in the menu */
-  .nav-text a {
-    text-decoration: none;
-    color: #f5f5f5;
-    font-size: 18px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  /* Hover effect for menu items */
-  .nav-text a:hover {
-    background-color: rgba(26, 131, 255, 0.7); /* Semi-transparent blue */
-    color: #ffffff;
-  }
-  
-  /* Text spacing for icons */
-  span {
-    margin-left: 16px;
-    font-family: 'Inter', sans-serif; /* Modern font */
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .sidebar {
-      padding: 0 1rem;
-    }
-  
-    .nav-menu {
-      width: 200px; /* Slightly narrower on mobile */
-    }
-  
-    .nav-text a {
-      font-size: 16px; /* Smaller text for mobile */
-    }
-  
-    .menu-bars {
-      font-size: 1.8rem; /* Slightly smaller icon on mobile */
-    }
+/* LinkedIn-inspired color palette */
+:root {
+  --linkedin-blue: #0A66C2;
+  --linkedin-dark-blue: #004B87;
+  --linkedin-light-blue: #E8F0FE;
+  --linkedin-gray: #6B7280;
+  --linkedin-white: #FFFFFF;
+  --linkedin-glow: rgba(10, 102, 194, 0.5);
+}
+
+/* Horizontal Navbar (sidebar) */
+.sidebar {
+  background: linear-gradient(90deg, rgba(10, 102, 194, 0.1), rgba(0, 75, 135, 0.1));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  position: fixed;
+  top: 0;
+  z-index: 900;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 8px 8px;
+}
+
+/* Navbar logo or brand */
+.sidebar-logo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--linkedin-white);
+  text-shadow: 0 0 8px var(--linkedin-glow);
+}
+
+/* Menu bars (hamburger icon) */
+.menu-bars {
+  font-size: 2rem;
+  background: none;
+  color: var(--linkedin-white);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.menu-bars:hover {
+  color: var(--linkedin-light-blue);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 12px var(--linkedin-glow);
+  transform: scale(1.1);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--linkedin-glow);
   }
+  50% {
+    box-shadow: 0 0 20px var(--linkedin-glow);
+  }
+}
+
+.menu-bars:hover {
+  animation: pulseGlow 1.5s infinite;
+}
+
+/* Toggle container */
+.sidebare-toggle {
+  background: transparent;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 2.5rem;
+  z-index: 1000;
+}
+
+/* Vertical Sidebar (Nav Menu) */
+.nav-menu {
+  background: linear-gradient(180deg, rgba(10, 102, 194, 0.2), rgba(0, 75, 135, 0.2));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 80px; /* Start below horizontal navbar */
+  left: -100%;
+  transition: left 0.35s ease-in-out;
+  z-index: 950;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Active state for vertical sidebar */
+.nav-menu.active {
+  left: 0;
+}
+
+/* Menu items container */
+.nav-menu-items {
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+/* Individual menu items */
+.nav-text {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 0;
+  list-style: none;
+  height: 60px;
+}
+
+/* Links in the menu */
+.nav-text a {
+  text-decoration: none;
+  color: var(--linkedin-white);
+  font-size: 1.1rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for menu items */
+.nav-text a:hover {
+  background-color: var(--linkedin-blue);
+  color: var(--linkedin-light-blue);
+  box-shadow: 0 0 10px var(--linkedin-glow);
+}
+
+/* Text spacing for icons */
+span {
+  margin-left: 1rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+/* Make sidebar a flex container to push logout to bottom */
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* top items stay up, logout stays at bottom */
+  height: 100%;
+}
+
+/* Logout button container */
+.nav-text.logout {
+  padding: 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* Logout button styling */
+.nav-text.logout button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem; /* optional for icon */
+  padding: 0.4rem 0.8rem; /* smaller button */
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #ef4444; /* red */
+  border: none;
+  border-radius: 0.25rem; /* smaller rounded corners */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-text.logout button:hover {
+  background-color: #dc2626; /* darker red on hover */
+  transform: translateY(-1px); /* subtle hover effect */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.nav-text.logout button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.5); /* focus ring */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    padding: 0 1.5rem;
+    height: 70px;
+  }
+
+  .sidebare-toggle {
+    height: 70px;
+    padding: 0 1.5rem;
+  }
+
+  .nav-menu {
+    width: 200px;
+    top: 70px;
+  }
+
+  .nav-text a {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .menu-bars {
+    font-size: 1.8rem;
+    padding: 0.4rem;
+  }
+
+  .sidebar-logo {
+    font-size: 1.3rem;
+  }
+}
+
+/* Accessibility */
+.menu-bars {
+  aria-label: "Toggle navigation menu";
+}
+
+/* Note: Ensure content pages (e.g., .dashboard) use padding-top: 100px (or 90px on mobile) to avoid overlap by the 80px .sidebar */

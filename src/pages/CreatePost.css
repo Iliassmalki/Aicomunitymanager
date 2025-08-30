@@ -1,0 +1,342 @@
+/* LinkedIn-inspired color palette */
+:root {
+  --linkedin-blue: #0A66C2;
+  --linkedin-light-blue: #E8F0FE;
+  --linkedin-gray: #6B7280;
+  --linkedin-light-gray: #F3F4F6;
+  --linkedin-white: #FFFFFF;
+  --linkedin-error: #FEE2E2;
+  --linkedin-error-text: #B91C1C;
+  --glow-color: rgba(10, 102, 194, 0.5);
+}
+.calendar-popup {
+  position: fixed; /* center relative to viewport */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* perfect centering */
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  min-width: 320px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: 'Inter', sans-serif;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.calendar-popup h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827; /* dark text */
+}
+
+.calendar-popup button {
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.calendar-popup button:hover {
+  opacity: 0.9;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -48%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Optional: overlay background for dim effect */
+.calendar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 900;
+}
+
+/* Container for the entire component */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Form and preview sections */
+.bg-white {
+  background-color: var(--linkedin-white);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Form heading */
+.text-lg.font-semibold {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--linkedin-blue);
+  margin-bottom: 1rem;
+}
+
+/* Error message */
+.border-red-200.bg-red-50.text-red-700 {
+  border: 1px solid var(--linkedin-error);
+  background-color: var(--linkedin-error);
+  color: var(--linkedin-error-text);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+/* Form styling */
+.space-y-4 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Labels */
+.text-sm.font-medium {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--linkedin-gray);
+}
+
+/* Textarea */
+textarea.w-full {
+  width: 100%;
+  min-height: 120px;
+  border: 1px solid var(--linkedin-light-gray);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--linkedin-gray);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea.w-full:focus {
+  outline: none;
+  border-color: var(--linkedin-blue);
+  box-shadow: 0 0 0 3px var(--linkedin-light-blue);
+}
+
+/* Select and input fields */
+select.w-full,
+input.w-full {
+  width: 100%;
+  border: 1px solid var(--linkedin-light-gray);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--linkedin-gray);
+  background-color: var(--linkedin-white);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.postbutton {
+  background-color: #22c55e; /* green */
+  color: white;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease-in-out;
+  font-size: 0.875rem; /* slightly smaller text */
+}
+
+.postbutton:hover {
+  background-color: #16a34a;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.schedulebutton {
+  background-color: #3b82f6; /* blue */
+  color: white;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px; /* space between icon and text */
+  transition: all 0.2s ease-in-out;
+  font-size: 0.875rem; /* slightly smaller text */
+}
+
+.schedulebutton:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.schedulebutton svg {
+  height: 16px; /* smaller icon */
+  width: 16px;
+}
+select.w-full:focus,
+input.w-full:focus {
+  outline: none;
+  border-color: var(--linkedin-blue);
+  box-shadow: 0 0 0 3px var(--linkedin-light-blue);
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--linkedin-blue);
+}
+
+/* Submit button with glow effect */
+button.bg-blue-600 {
+  width: 100%;
+  background-color: var(--linkedin-blue);
+  color: var(--linkedin-white);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 8px var(--glow-color);
+}
+
+button.bg-blue-600:hover:not(:disabled) {
+  background-color: #004B87;
+  box-shadow: 0 0 12px var(--glow-color);
+}
+
+button.bg-blue-600:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Preview section */
+.text-gray-500 {
+  color: var(--linkedin-gray);
+  font-size: 0.875rem;
+}
+
+.text-xs.text-gray-500 {
+  color: var(--linkedin-gray);
+  font-size: 0.75rem;
+}
+
+/* Copy buttons with subtle glow */
+button.border {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--linkedin-light-gray);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--linkedin-gray);
+  background-color: var(--linkedin-white);
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 4px var(--glow-color);
+}
+
+button.border:hover {
+  background-color: var(--linkedin-light-gray);
+  box-shadow: 0 0 8px var(--glow-color);
+}
+
+/* Hashtags */
+.rounded-full.bg-gray-100.text-gray-700 {
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  background-color: var(--linkedin-light-gray);
+  color: var(--linkedin-gray);
+  font-size: 0.75rem;
+}
+
+/* Image preview */
+img.rounded-lg {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border: 1px solid var(--linkedin-light-gray);
+  border-radius: 0.5rem;
+}
+
+/* Suggestions window */
+.suggestions-window {
+  background-color: var(--linkedin-light-blue);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.suggestions-window .text-linkedin-blue {
+  color: var(--linkedin-blue);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.suggestions-window .text-gray-700 {
+  color: var(--linkedin-gray);
+  font-size: 0.875rem;
+}
+
+/* Responsive layout */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* General typography */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--linkedin-gray);
+  background-color: var(--linkedin-light-gray);
+}
+
+/* Flex utilities */
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/* Grid for form inputs */
+.grid-cols-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* Whitespace for text preview */
+.whitespace-pre-wrap {
+  white-space: pre-wrap;
+}

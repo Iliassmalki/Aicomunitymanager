@@ -162,10 +162,51 @@ margin-top: 10px;
   color: #777;
 }
 
-.more-info-icon {
-  color: #0077B5;
+.more-info-icon,
+.Go-to-icon {
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease, text-shadow 0.3s ease, filter 0.3s ease;
+  /* base color */
+  color: #0077B5;
+  /* subtle glow */
+  text-shadow: 0 0 5px rgba(0, 119, 181, 0.6);
+  filter: drop-shadow(0 0 3px rgba(0, 119, 181, 0.4));
+}
+
+.Go-to-icon {
+  color: #000000;
+  /* base black with subtle glow */
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Hover effect: brighten and stronger glow */
+.more-info-icon:hover {
+  color: #00aaff;
+  text-shadow: 0 0 12px rgba(0, 170, 255, 0.9);
+  filter: drop-shadow(0 0 8px rgba(0, 170, 255, 0.8));
+}
+
+.Go-to-icon:hover {
+  color: #333333;
+  text-shadow: 0 0 10px rgba(50, 50, 50, 0.8);
+  filter: drop-shadow(0 0 6px rgba(50, 50, 50, 0.7));
+}
+
+/* Optional: smooth pulse glow animation on hover */
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
+    filter: drop-shadow(0 0 8px rgba(0, 170, 255, 0.7));
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 170, 255, 1);
+    filter: drop-shadow(0 0 16px rgba(0, 170, 255, 1));
+  }
+}
+
+.more-info-icon:hover {
+  animation: glowPulse 1.5s infinite;
 }
 
 .more-info-icon:hover {
