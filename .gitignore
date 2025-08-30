@@ -1,0 +1,40 @@
+# Node.js dependencies
+node_modules/
+package-lock.json
+
+# Environment variables (sensitive data)
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output (if you have a build step)
+dist/
+build/
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Coverage reports (if you run tests)
+coverage/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Optional: Ignore specific sensitive files (if not in .env)
+*.key
+*.pem
