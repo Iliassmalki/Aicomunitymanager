@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 //POST SCHEDULER
 
 cron.schedule("* * * * *", async () => {
-  console.log("⏱ Checking for scheduled posts...");
+  console.log(" Checking for scheduled posts...");
 
   const now = new Date();
 
@@ -148,7 +148,7 @@ app.get("/api/linkedin-getsharedposts", authenticateJWT, async (req, res) => {
       return res.status(400).json({ error: "Invalid LinkedIn user ID" });
     }
 
-    const fullURN = `urn:li:organization:${process.env.ORN}`;
+    const fullURN = `urn:li:organization:${process.env.companyORN}`;
     console.log("Constructed URN:", fullURN);
 
     // Fetch shares
@@ -183,7 +183,7 @@ app.get("/api/linkedin-shares", authenticateJWT, async (req, res) => {
     console.log("===== /api/linkedin-shares called =====");
     
     const linkedInToken = req.user.linkedinAccessToken;
-    const URN = `urn:li:organization:${process.env.ORN}`;
+    const URN = `urn:li:organization:${process.env.companyORN}`;
     
     console.log("User in request:", req.user);
     console.log("LinkedIn Token:", linkedInToken);
@@ -210,45 +210,12 @@ app.get("/api/linkedin-shares", authenticateJWT, async (req, res) => {
 });
 
 
-app.get("/api/linkedin-followers", async (req, res) => {
 
-  try {
-    const URN= `urn:li:organization:${process.env.ORN}`
-    const token=`${process.env.LINKEDIN_ACCESS_TOKEN}`
-    const response = await axios.get(
-      `https://api.linkedin.com/rest/organizationalEntityFollowerStatistics?q=organizationalEntity&organizationalEntity=${URN}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "LinkedIn-Version": "202508"
-        },
-      }
-    );
-    res.json(response.data);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to fetch LinkedIn Followers" });
-  }
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
-
-app.get("/api/Pagestats", async (req, res) => {
-  try {
-    const URN= `urn:li:organization:${process.env.ORN}`
-  const token=`${process.env.LINKEDIN_ACCESS_TOKEN}`
-    const response = await axios.get(
-      `https://api.linkedin.com/rest/organizationPageStatistics?q=organization&organization=${URN}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          
-        },
-      }
-    );
-    res.json(response.data);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to fetch LinkedIn stats" });
-  }
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
 // MongoDB + Start Server
 async function connectDB() {

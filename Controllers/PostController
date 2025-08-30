@@ -74,7 +74,7 @@ router.post("/linkedin/postnow",authenticateJWT, async (req, res) => {
     const { title, content, hashtags, imageUrl } = req.body;
 
     const accessToken = req.user.linkedinAccessToken; // store securely
-    const author = `urn:li:person:${req.user.linkedinId}`;
+    const author = `urn:li:organization:${process.env.companyORN}`;
 
     let asset = null;
 
